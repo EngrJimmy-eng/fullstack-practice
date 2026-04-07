@@ -31,6 +31,4 @@ jobs:
         run: terraform init
 
       - name: Apply
-        run: terraform apply -auto-approve \
-          -var="subnet_id=${{ secrets.SUBNET_ID }}" \
-          -var="sg_id=${{ secrets.SG_ID }}"
+        run: terraform apply -auto-approve -var="subnet_id=${{ secrets.SUBNET_ID }}" -var="sg_id=${{ secrets.SG_ID }}"
