@@ -21,7 +21,7 @@ data "aws_ami" "ubuntu" {
 
 # ✅ EC2 INSTANCE
 resource "aws_instance" "app" {
-  ami           = data.aws_ami.latest_amazon_linux.id
+  ami = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"  # <-- Updated to t3.micro
 
   subnet_id = var.subnet_id
