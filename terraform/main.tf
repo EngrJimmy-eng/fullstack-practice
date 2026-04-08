@@ -3,14 +3,12 @@ provider "aws" {
 }
 
 resource "aws_instance" "app" {
-  ami           = "ami-0c02fb55956c7d316"
+  ami           = data.aws_ami.latest_amazon_linux.id
   instance_type = "t2.micro"
 
   subnet_id = var.subnet_id
-
   vpc_security_group_ids = [var.sg_id]
 
-  # Use your existing IAM role (instance profile must have SSM permissions)
   iam_instance_profile = "ikenna-ec2-ssm-prod-role"
 
   user_data = file("userdata.sh")
