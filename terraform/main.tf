@@ -44,6 +44,16 @@ resource "aws_iam_instance_profile" "ssm_profile" {
   role = aws_iam_role.ssm_role.name
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "fullstack-practice-tf-state-ikenna"
+    key            = "global/s3/terraform.tfstate"
+    region         = "eu-west-1"
+    dynamodb_table = "terraform-lock"
+    encrypt        = true
+  }
+}
+
 
 
 
