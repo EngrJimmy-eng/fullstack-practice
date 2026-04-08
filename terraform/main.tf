@@ -22,7 +22,7 @@ data "aws_ami" "latest_amazon_linux" {
 # ✅ EC2 INSTANCE
 resource "aws_instance" "app" {
   ami           = data.aws_ami.latest_amazon_linux.id
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"  # <-- Updated to t3.micro
 
   subnet_id = var.subnet_id
   vpc_security_group_ids = [var.sg_id]
