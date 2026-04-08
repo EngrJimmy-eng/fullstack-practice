@@ -1,6 +1,4 @@
-provider "aws" {
-  region = "eu-west-1"
-}
+
 
 resource "aws_s3_bucket" "tf_state" {
   bucket = "fullstack-practice-tf-state-ikenna"
