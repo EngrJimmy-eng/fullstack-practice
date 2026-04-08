@@ -40,7 +40,7 @@ resource "aws_iam_role_policy_attachment" "ssm_attach" {
 }
 
 resource "aws_iam_instance_profile" "ssm_profile" {
-  name = "ssm-instance-profile"
+  name = "ssm-instance-profile-1"
   role = aws_iam_role.ssm_role.name
 }
 
