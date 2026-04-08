@@ -2,21 +2,21 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-# ✅ DATA SOURCE: Fetch latest Amazon Linux 2 AMI
-data "aws_ami" "latest_amazon_linux" {
+# ✅ Fetch latest Ubuntu 22.04 LTS
+data "aws_ami" "ubuntu" {
   most_recent = true
+
+  owners = ["099720109477"] # Canonical (Ubuntu)
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
-  owners = ["137112412989"] # Amazon official account
 }
 
 # ✅ EC2 INSTANCE
