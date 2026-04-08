@@ -10,7 +10,8 @@ resource "aws_instance" "app" {
 
   vpc_security_group_ids = [var.sg_id]
 
-  iam_instance_profile = aws_iam_instance_profile.ssm_profile.name
+  # Use your existing IAM role (instance profile must have SSM permissions)
+  iam_instance_profile = "ikenna-ec2-ssm-prod-role"
 
   user_data = file("userdata.sh")
 
@@ -18,10 +19,6 @@ resource "aws_instance" "app" {
     Name = "fullstack-practice"
   }
 }
-
-
-
-
 
 terraform {
   backend "s3" {
@@ -32,7 +29,6 @@ terraform {
     encrypt        = true
   }
 }
-
 
 
 
